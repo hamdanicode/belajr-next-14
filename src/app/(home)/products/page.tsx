@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import React from 'react'
 
 // const url="https://dummyjson.com/products"
-const url = new URL('https://dummyjson.com/products');
+const url = new URL(process.env.API_URL+'/products');
 const getData=async(searchParams:any)=>{
   console.log(searchParams);
   url.searchParams.set('limit',searchParams.limit??15)
@@ -16,12 +16,7 @@ const getData=async(searchParams:any)=>{
 }
 
 const Products = async({searchParams}:{searchParams:{limit:string,page:string}}) => {  
-  // const {limit}=searchParams;
-  const data = await getData(searchParams)
-  // console.log(data);
-  
-  // console.log(limit??6);
-  
+  const data = await getData(searchParams)  
   return (
     <>
     <h1 className='font-bold text-md'>Products</h1>

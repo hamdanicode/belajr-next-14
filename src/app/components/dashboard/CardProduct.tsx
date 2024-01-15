@@ -3,33 +3,86 @@ import Link from 'next/link';
 import React from 'react';
 import { TERipple } from 'tw-elements-react';
 
-export default function CardProduct({ product }: { product: any }) {
-  const { id, title,price, thumbnail, description } = product;
+const Rating = () => {
   return (
-    
-    <div className='block rounded-sm bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700'>
-      <Link href='#!'>
-        <img
-          className='mx-auto max-h-48 w-full rounded-t-sm'
-          src={thumbnail}
-          alt={title}
-        />
+    <svg
+      aria-hidden='true'
+      className='h-5 w-5 text-yellow-300'
+      fill='currentColor'
+      viewBox='0 0 20 20'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z'></path>
+    </svg>
+  );
+};
+
+export default function CardProduct({ product }: { product: any }) {
+  const {
+    id,
+    title,
+    price,
+    thumbnail,
+    rating,
+    description,
+    discountPercentage,
+  } = product;
+  const ratingCount = [];
+  const priceDisc = price - (discountPercentage / 100) * price;
+  let i: any;
+  for (i = 0; i < rating; i++) {
+    ratingCount.push(i);
+  }
+  return (
+    <div className='relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md'>
+      <Link
+        className='relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl'
+        href={"/products/detail/"+id}
+      >
+        <img className='object-cover' src={thumbnail} alt='product image' />
+        <span className='absolute left-0 top-0 m-2 rounded-full bg-teal-900 px-2 text-center text-sm font-medium text-white'>
+          {discountPercentage}% OFF
+        </span>
       </Link>
-      <div className='min-h-30 p-4'>
-        <h5 className='text-sm mb-2 font-bold leading-tight text-neutral-800 dark:text-neutral-50'>
-          {title}
-        </h5>
-        {/* <p className="mb-4 text-sm text-neutral-600 dark:text-neutral-200">
-            {description}
-          </p> */}
-        <h6 className='font-bold'>${price}</h6>
-      
-            <button
-              type='button'
-              className='mt-auto inline-block rounded bg-teal-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-teal-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-teal-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-teal-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
-            >
-              Button
-            </button>
+      <div className='mt-4 px-5 pb-5'>
+        <Link href='#'>
+          <h5 className='text-xl tracking-tight text-slate-900'>{title}</h5>
+        </Link>
+        <div className='mb-2 mt-2 flex items-center justify-between'>
+          <p>
+            <span className='text-2xl font-bold text-slate-900'>
+              ${priceDisc.toFixed(2)}
+            </span>
+            <span className='text-sm text-slate-900 line-through'>
+              ${price}
+            </span>
+          </p>
+        </div>
+          <div className='flex mb-5 items-center'>
+            {ratingCount.map(() => (
+              <Rating />
+            ))}
+          </div>
+        <Link
+          href='#'
+          className='flex items-center justify-center rounded-md bg-teal-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-blue-300'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='mr-2 h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+            stroke-width='2'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
+            />
+          </svg>
+          Add to cart
+        </Link>
       </div>
     </div>
   );
