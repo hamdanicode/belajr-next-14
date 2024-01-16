@@ -65,7 +65,9 @@ export default function RootLayout({
                 </div>
                 {children}
               </div>
-              <div className='h-12 mt-4 bg-slate-800'>FOoter</div>
+              <div className='h-12 mt-4 bg-slate-500 pt-2 text-white px-4'>
+                <span>Footer</span>
+              </div>
             </div>
           </div>
         </div>
