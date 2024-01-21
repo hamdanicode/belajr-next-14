@@ -10,10 +10,8 @@ const getData=async(id:string)=>{
 
 const ProductDetail = async({params}:any) => {
     const product=await getData(params.id);
-    // console.log(product);
 
     const {title,id,description,price,thumbnail}=product
-    // console.log(product);
     
   return (
     <div className='container mx-auto my-10'>

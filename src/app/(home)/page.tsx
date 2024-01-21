@@ -7,7 +7,7 @@ export default function Home() {
       <h1 className='mb-4 text-center text-4xl'>Home</h1>
       <ul>
         <li>
-          <Link href='/dashboard'>Home</Link>
+          <Link href='/dashboard'>Goto Dashboard</Link>
         </li>
       </ul>
     </div>

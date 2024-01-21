@@ -1,33 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
-
+import { signIn } from 'next-auth/react';
 const menus = [
   {
     name: 'Home',
     url: '/',
     icon: '-',
   },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
-  { name: 'Dashboard', url: '/dashboard', icon: '-' },
   { name: 'Dashboard', url: '/dashboard', icon: '-' },
   { name: 'Dashboard', url: '/dashboard', icon: '-' },
   { name: 'Dashboard', url: '/dashboard', icon: '-' },
@@ -48,6 +27,12 @@ const Sidebar = () => {
             </li>
           );
         })}
+        <li className='px-4 py-1 hover:bg-teal-100 hover:text-teal-700'>
+          <button onClick={()=>{
+            signIn();
+          }}>Login</button>
+        </li>
+
       </ol>
     </div>
   );
