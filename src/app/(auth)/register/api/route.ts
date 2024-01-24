@@ -1,18 +1,30 @@
-import { log } from "console"
+// import { log } from "console"
+import {hash} from "bcrypt";
 import { NextResponse } from "next/server"
 
-export const dynamic = 'force-dynamic' // defaults to auto
-export async function GET(request: Request) {
-    return NextResponse.json({
-        status:"success",
-        data:{
+
+// export const dynamic = 'force-dynamic' // defaults to auto
+// export async function GET(request: Request) {
+//     return NextResponse.json({
+//         status:"success",
+//         data:{
              
-        }
-    })
-}
+//         }
+//     })
+// }
 export async function POST(request: Request) {
     const {username,password}=await request.json()
     console.log(username,password);
+
+    const hashPassword= await hash(password,10);
+    // const result=await fetch('http://localhost:3001/users', {
+    //     method: 'POST',
+    //     body:JSON.stringify({
+    //         username:username,
+    //         password:hashPassword,
+    //         role:"admin"
+    //     })
+    // })
     
-    return NextResponse.json(request)
+    return NextResponse.json(hashPassword)
 }
