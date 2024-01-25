@@ -1,5 +1,6 @@
 // import { log } from "console"
-import {hash} from "bcrypt";
+// import bcrypt from "@types/bcrypt";
+
 import { NextResponse } from "next/server"
 
 
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
     const {username,password}=await request.json()
     console.log(username,password);
 
-    const hashPassword= await hash(password,10);
+    // const hashPassword= awai;
     // const result=await fetch('http://localhost:3001/users', {
     //     method: 'POST',
     //     body:JSON.stringify({

@@ -9,13 +9,14 @@ import { TEInput, TERipple } from 'tw-elements-react';
 const Form = () => {
     const { push } = useRouter()
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData=new FormData(e.currentTarget)
     try {
       const result = await signIn('credentials', {
         redirect: false,
-        username: e.currentTarget.username.value,
-        password: e.currentTarget.password.value,
+        username: formData.get('username'),
+        password: formData.get('password'),
         callbackUrl: '/dashboard'
       })
       if (!result?.error) push('/dashboard')

@@ -8,7 +8,7 @@ export default function RegisterForm(){
         e.preventDefault()
         const formData=new FormData(e.currentTarget)
         try {
-            const result=await fetch('/register/api', {
+            const result=await fetch('/api/text', {
                 method: 'POST',
                 body:JSON.stringify({
                     username:formData.get('username'),

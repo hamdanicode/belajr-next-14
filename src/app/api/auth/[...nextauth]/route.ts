@@ -19,14 +19,21 @@ const handler = NextAuth({
     },
     async authorize(credentials, req) {
       // Add logic here to look up the user from the credentials supplied
-      console.log("authorized");
-      console.log(credentials);
-      const user = { id: "1", name: "Hamdani", email: "hamdani.etik@gmail.com",password:"12345" }
-      if(credentials?.username===user.email&& credentials.password===user.password){
-        return user;
-      }else{
-        return null;
-      }
+      // console.log("authorized");
+      // console.log(credentials);
+      // const user = { id: "1", name: "Hamdani", email: "hamdani.etik@gmail.com",password:"12345" }
+      // const url=new URL("http://localhost:3001/users")
+      // url.searchParams.set('email',credentials?.username);
+      // console.log(url);
+      
+
+      return null;
+
+      // if(credentials?.username===user.email&& credentials.password===user.password){
+      //   return user;
+      // }else{
+      //   return null;
+      // }cre
     }
   })
   ]

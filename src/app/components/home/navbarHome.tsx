@@ -23,7 +23,7 @@ const NavbarHome = () => {
             <span className='my-auto text-xl'>Logo</span>
             <ol className='mx-auto flex uppercase '>
               {menus.map((el,key)=>{
-                return <Link href={el.url}><li key={key} className={pathname==el.url?'rounded-tl-xl rounded-tr-xl h-full px-3 pt-3 bg-white text-teal-700':'hover:rounded-tl-xl hover:rounded-tr-xl h-full px-3 pt-3 hover:bg-white hover:text-teal-700'}>{el.name}</li></Link>
+                return <Link href={el.url}  key={key} ><li className={pathname==el.url?'rounded-tl-xl rounded-tr-xl h-full px-3 pt-3 bg-white text-teal-700':'hover:rounded-tl-xl hover:rounded-tr-xl h-full px-3 pt-3 hover:bg-white hover:text-teal-700'}>{el.name}</li></Link>
               }
               )}
             </ol>

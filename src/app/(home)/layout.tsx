@@ -2,10 +2,8 @@ import NavbarHome from "../components/home/navbarHome";
 
 export default function Layout({
   children,
-  modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
 }) {
   return (
     <>

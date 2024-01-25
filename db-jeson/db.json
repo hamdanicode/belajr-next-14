@@ -1,5 +1,16 @@
 {
-    "users": [
-      { "id": "1", "username": "hamdani@gmail.com","password":"1234567","role":"admin" }
-    ]
+  "users": [
+    {
+      "username": "hamdani.etik@gmail.com",
+      "password": "$2b$10$pMSkEOWvKbFZukdnT/o8eu6O1FZgAqHgZQ0tIBTlSXrvaVXPh.RUi",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "username": "jumadil@gmail.com",
+      "password": "$2b$10$iVWOPp1d0A9njyZEruv0GOrJziKGakfhkZ2Rm1bl0Sxqh07o2b6NS",
+      "role": "admin",
+      "id": 2
+    }
+  ]
 }
