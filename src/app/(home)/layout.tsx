@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+
 import NavbarHome from "../components/home/navbarHome";
 
 export default async function Layout({

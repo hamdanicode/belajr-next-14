@@ -6,7 +6,7 @@ import NextAuth, { User } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 const handler = NextAuth({
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
   },
   providers: [CredentialsProvider({
     // The name to display on the sign in form (e.g. "Sign in with...")

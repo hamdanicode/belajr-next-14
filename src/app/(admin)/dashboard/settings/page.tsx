@@ -1,14 +1,18 @@
-import Link from 'next/link';
-import React from 'react';
+import {getToken} from 'next-auth/jwt'
+import { NextRequest, NextResponse } from 'next/server';
+import React from 'react'
 
-const Settings = () => {
-  return (
-    <div>
-      Settings
-      <Link href='/dashboard'>Goto Dashboars</Link>
-      <br />
-    </div>
-  );
-};
+const GetToken =async (req:any, res:any) => {
+    console.log("get Token");
+    const token = await getToken({ req })
+    console.log(token);
+    if(token){
+        
 
-export default Settings;
+    }
+
+    
+  return {test:"hello"}
+}
+
+export default GetToken
