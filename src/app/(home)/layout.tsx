@@ -7,15 +7,14 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const session= await getServerSession();
-  console.log("Session");
-  console.log(!session);
+  // console.log("Session Home");
+  // console.log(session);
   
   return (
     <>
         <div className='relative h-screen'>
           <NavbarHome isSession={!session} />
           <div className='mx-20 pt-14 pb-10'>
-          
             {children}</div>
         </div>
     </>

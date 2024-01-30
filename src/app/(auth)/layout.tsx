@@ -1,6 +1,3 @@
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import Logout from "./logout";
 
 export default async function Layout({
   children,

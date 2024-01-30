@@ -21,45 +21,47 @@ const handler = NextAuth({
       console.log("authorize");
       // console.log(rows);
       const userData=rows[0];
-      
       const passwordCorrect=await compare(credentials?.password,userData.password??'')
+      // console.log(userData);
+      
+
+      const userD:any={
+        id:userData.id,
+        email:userData.email,
+        name:userData.name,
+        role:userData.role
+      }
+
       if (passwordCorrect) {
-        return {
-          id:userData.id,
-          username:userData.email,
-        }
+        return  userD
       }else{
         return null;
       }
-      
     }
   })
   ]
   ,
-  // callbacks: {
-  //   async jwt({ token, account, user }: any) {
-  //     // Persist the OAuth access_token and or the user id to the token right after signin
-  //     console.log("jwt cllback");
-
-  //     if (account) {
-  //       token.accessToken = account.access_token
-  //       token.id = user.id
-  //     }
-  //     return token
-  //   },
-  //   async session({ session, token }: any) {
-  //     console.log("session");
-
-  //     // if('email' in token){
-  //     //   session.token.email=  
-  //     // }
-  //     return session
-  //   }
-  // },
+  callbacks: {
+    async jwt({ token, account, user }: any) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      console.log("JWT check");
+      if(account){
+        token.sub={id:user.id,role:user.role};
+      }
+      return token
+    },
+    async session({ session, token }: any) {
+      console.log("Session check");
+      console.log(session);
+      session.user.role=token.sub.role;
+      
+      // session.destroy      
+      return session
+    }
+  },
   pages:{
     signIn:"/login"
   }
-
 })
 
 export { handler as GET, handler as POST }

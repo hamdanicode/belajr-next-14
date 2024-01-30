@@ -1,6 +1,9 @@
 import Form from "./Form";
 
-const Login = () => {
+const Login = async () => {
+
+
+
   return (
     <Form />
   );
